@@ -37,16 +37,16 @@ public class Puzzle extends JFrame {
     private List<MyButton> buttons;
     private List<Point> solution;
 
-    private final int NUMBER_OF_BUTTONS = 12;
-    private final int DESIRED_WIDTH = 300;
+    private final int NumberOfButtons = 12;
+    private final int DesiredWidth = 300;
 
 
     public Puzzle() {
 
-        initUI();
+        startUI();
     }
 
-    private void initUI() {
+    private void startUI() {
 
         solution = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class Puzzle extends JFrame {
         try {
             source = loadImage();
             int h = getNewHeight(source.getWidth(), source.getHeight());
-            resized = resizeImage(source, DESIRED_WIDTH, h,
+            resized = resizeImage(source, DesiredWidth, h,
                     BufferedImage.TYPE_INT_ARGB);
 
         } catch (IOException ex) {
@@ -113,7 +113,7 @@ public class Puzzle extends JFrame {
         Collections.shuffle(buttons);
         buttons.add(lastButton);
 
-        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
+        for (int i = 0; i < NumberOfButtons; i++) {
 
             var btn = buttons.get(i);
             panel.add(btn);
@@ -123,7 +123,7 @@ public class Puzzle extends JFrame {
 
         pack();
 
-        setTitle("Puzzle");
+        setTitle("Solve Puzzle");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -131,7 +131,7 @@ public class Puzzle extends JFrame {
 
     private int getNewHeight(int w, int h) {
 
-        double ratio = DESIRED_WIDTH / (double) w;
+        double ratio = DesiredWidth / (double) w;
         int newHeight = (int) (h * ratio);
         return newHeight;
     }
